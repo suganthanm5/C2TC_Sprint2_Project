@@ -2,17 +2,14 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './OrderForm.css';
 
-/* Helpers to normalize many possible date shapes into:
-   - inputValue: for <input type="datetime-local"> (YYYY-MM-DDTHH:MM)
-   - backendValue: for your backend LocalDateTime (YYYY-MM-DDTHH:MM:SS)
-*/
+
 
 function pad(n) {
   return String(n).padStart(2, '0');
 }
 
 function dateToInputValue(d) {
-  // produce "YYYY-MM-DDTHH:MM" (seconds often not supported by datetime-local)
+
   const Y = d.getFullYear();
   const M = pad(d.getMonth() + 1);
   const D = pad(d.getDate());
@@ -22,7 +19,7 @@ function dateToInputValue(d) {
 }
 
 function dateToBackendValue(d) {
-  // produce "YYYY-MM-DDTHH:MM:SS" (no timezone 'Z')
+  
   const Y = d.getFullYear();
   const M = pad(d.getMonth() + 1);
   const D = pad(d.getDate());
@@ -35,22 +32,20 @@ function dateToBackendValue(d) {
 function parseAnyToDate(value) {
   if (value === null || value === undefined) return new Date();
 
-  // strings - try to parse ISO-ish strings
   if (typeof value === 'string') {
-    // some backends include fractional seconds or 'Z' — remove them
+    
     const cleaned = value.split('.')[0].replace('Z', '');
     // If it contains 'T', try Date.parse
     if (cleaned.includes('T')) {
       const parsed = new Date(cleaned);
       if (!isNaN(parsed)) return parsed;
     }
-    // fallback parse
+   
     const parsed = new Date(value);
     if (!isNaN(parsed)) return parsed;
-    return new Date(); // fallback
+    return new Date(); 
   }
 
-  // number (epoch seconds or ms)
   if (typeof value === 'number') {
     const ms = value < 1e12 ? value * 1000 : value;
     const parsed = new Date(ms);
@@ -58,12 +53,12 @@ function parseAnyToDate(value) {
     return new Date();
   }
 
-  // Date object
+  
   if (value instanceof Date) {
     return value;
   }
 
-  // object with fields (e.g. { year, month, day, hour, minute, second })
+
   if (typeof value === 'object') {
     const year = value.year ?? value.Y ?? value.y;
     const month = value.month ?? value.m;
@@ -75,7 +70,7 @@ function parseAnyToDate(value) {
       // months in JS Date are 0-indexed
       return new Date(year, month - 1, day, h, min, sec);
     }
-    // last resort: try JSON -> Date string parse
+  
     try {
       const maybe = JSON.stringify(value);
       const parsed = new Date(maybe);
@@ -83,7 +78,7 @@ function parseAnyToDate(value) {
     } catch {}
   }
 
-  // fallback
+ 
   return new Date();
 }
 
@@ -146,12 +141,12 @@ export default function OrderForm({ onCreate, onUpdate, editingOrder, cancelEdit
       return;
     }
 
-    // Build backend-friendly orderDate string (includes seconds)
+    
     const dateObj = new Date(orderDateInput);
     const backendOrderDate = dateToBackendValue(dateObj);
 
     const payload = {
-      // if id empty, omit it (server may generate)
+     
       ...(id ? { id: Number(id) } : {}),
       customerName: customerName.trim(),
       product: product.trim(),
@@ -164,13 +159,13 @@ export default function OrderForm({ onCreate, onUpdate, editingOrder, cancelEdit
     setSubmitting(true);
     try {
       if (editingOrder) {
-        // call parent update and let it handle errors
+        
         await onUpdate(editingOrder.id, payload);
       } else {
         await onCreate(payload);
       }
 
-      // reset on create
+     
       if (!editingOrder) {
         setId('');
         setCustomerName('');
