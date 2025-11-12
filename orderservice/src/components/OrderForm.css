@@ -1,0 +1,175 @@
+/* src/components/OrderForm.css — modern neon glass style */
+.order-form.card {
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(6px) saturate(120%);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 10px 40px rgba(3,6,23,0.6);
+}
+
+/* glowing gradient accent strip */
+.order-form.card::before {
+  content: "";
+  position: absolute;
+  left: -40%;
+  top: -30%;
+  width: 200%;
+  height: 180px;
+  background: linear-gradient(90deg, rgba(124,92,255,0.16), rgba(0,212,255,0.12));
+  transform: rotate(-12deg);
+  filter: blur(24px);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+.order-form h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: var(--text);
+  z-index: 2;
+  position: relative;
+}
+
+.order-form form {
+  display: grid;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.order-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* 🌈 unified input & select styling */
+.order-form input[type="text"],
+.order-form input[type="number"],
+.order-form input[type="datetime-local"],
+.order-form select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(18,24,44,0.6);
+  color: var(--text);
+  outline: none;
+  font-size: 14px;
+  transition: transform .08s ease, box-shadow .12s ease, border-color .12s ease, background .12s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* custom dropdown arrow for select */
+  background-image: linear-gradient(45deg, transparent 50%, var(--accent-2) 50%),
+                    linear-gradient(135deg, var(--accent-2) 50%, transparent 50%);
+  background-position: calc(100% - 18px) calc(1em + 2px),
+                       calc(100% - 13px) calc(1em + 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* hover & focus states */
+.order-form input:hover,
+.order-form select:hover {
+  background-color: rgba(22,30,60,0.75);
+}
+
+.order-form input:focus,
+.order-form select:focus {
+  box-shadow: 0 0 0 2px rgba(124,92,255,0.3), 0 10px 30px rgba(59,130,246,0.12);
+  border-color: var(--accent-1);
+  transform: translateY(-2px);
+}
+
+/* dark dropdown list */
+.order-form select option {
+  background-color: #0b1020;
+  color: #eaf3ff;
+  padding: 8px;
+}
+
+.order-form select option:hover,
+.order-form select option:focus {
+  background-color: rgba(124,92,255,0.35);
+  color: #fff;
+}
+
+/* subtle placeholder color */
+.order-form input::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+
+/* actions section */
+.form-actions {
+  display:flex;
+  gap: 10px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+/* 💜 primary button */
+.order-form button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  box-shadow: 0 10px 28px rgba(124,92,255,0.14);
+  transition: transform .08s ease, box-shadow .12s ease, opacity .12s ease;
+}
+
+.order-form button:hover {
+  box-shadow: 0 12px 30px rgba(59,130,246,0.25);
+  transform: translateY(-1px);
+}
+
+.order-form button:active {
+  transform: translateY(1px) scale(.995);
+}
+
+.order-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* secondary button */
+.order-form button.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 9px 12px;
+  font-weight: 700;
+  transition: background .12s ease, border-color .12s ease;
+}
+
+.order-form button.secondary:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* inline error */
+.form-error {
+  color: var(--danger);
+  background: rgba(255,107,107,0.06);
+  border: 1px solid rgba(255,107,107,0.08);
+  padding: 8px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+/* responsive */
+@media (max-width: 520px) {
+  .order-form form { gap: 10px; }
+  .order-form input, .order-form select { padding: 10px; font-size: 13px; }
+}
