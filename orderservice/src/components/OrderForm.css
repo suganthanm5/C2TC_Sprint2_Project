@@ -1,4 +1,4 @@
-/* src/components/OrderForm.css — modern neon glass style */
+
 .order-form.card {
   padding: 20px;
   position: relative;
@@ -10,7 +10,7 @@
   box-shadow: 0 10px 40px rgba(3,6,23,0.6);
 }
 
-/* glowing gradient accent strip */
+
 .order-form.card::before {
   content: "";
   position: absolute;
@@ -49,7 +49,7 @@
   font-size: 13px;
 }
 
-/* 🌈 unified input & select styling */
+
 .order-form input[type="text"],
 .order-form input[type="number"],
 .order-form input[type="datetime-local"],
@@ -75,7 +75,7 @@
   background-repeat: no-repeat;
 }
 
-/* hover & focus states */
+
 .order-form input:hover,
 .order-form select:hover {
   background-color: rgba(22,30,60,0.75);
@@ -88,7 +88,7 @@
   transform: translateY(-2px);
 }
 
-/* dark dropdown list */
+
 .order-form select option {
   background-color: #0b1020;
   color: #eaf3ff;
@@ -101,12 +101,12 @@
   color: #fff;
 }
 
-/* subtle placeholder color */
+
 .order-form input::placeholder {
   color: rgba(255,255,255,0.25);
 }
 
-/* actions section */
+
 .form-actions {
   display:flex;
   gap: 10px;
@@ -114,7 +114,7 @@
   align-items: center;
 }
 
-/* 💜 primary button */
+
 .order-form button {
   padding: 10px 14px;
   border-radius: 10px;
@@ -158,7 +158,7 @@
   border-color: rgba(255,255,255,0.12);
 }
 
-/* inline error */
+
 .form-error {
   color: var(--danger);
   background: rgba(255,107,107,0.06);
@@ -168,7 +168,7 @@
   font-size: 13px;
 }
 
-/* responsive */
+
 @media (max-width: 520px) {
   .order-form form { gap: 10px; }
   .order-form input, .order-form select { padding: 10px; font-size: 13px; }
