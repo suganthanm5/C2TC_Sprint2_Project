@@ -1,4 +1,4 @@
-/* src/components/OrderList.css — upgraded Orders section look */
+
 .order-list.card {
   padding: 18px;
   position: relative;
@@ -8,7 +8,6 @@
   box-shadow: 0 10px 36px rgba(3,6,23,0.5);
 }
 
-/* header with controls */
 .order-list-header {
   display: flex;
   align-items: center;
@@ -23,7 +22,7 @@
   color: var(--text);
 }
 
-/* controls */
+
 .controls {
   display:flex;
   gap:10px;
@@ -73,7 +72,7 @@
   font-size: 14px;
 }
 
-/* sticky header */
+
 .order-list thead th {
   position: sticky;
   top: 0;
@@ -88,7 +87,7 @@
   cursor: pointer;
 }
 
-/* sorting indicator via class (asc/desc) */
+
 .order-list thead th.asc::after,
 .order-list thead th.desc::after {
   content: "";
@@ -106,7 +105,7 @@
   border-top: 8px solid var(--accent-2);
 }
 
-/* body rows */
+
 .order-list tbody tr {
   transition: background .12s ease, transform .08s ease;
   border-bottom: 1px solid rgba(255,255,255,0.02);
@@ -119,7 +118,7 @@
   transform: translateY(-3px);
 }
 
-/* data cells */
+
 .order-list td {
   padding: 12px 14px;
   color: var(--text);
@@ -127,13 +126,13 @@
   font-size: 14px;
 }
 
-/* muted date cell */
+
 .order-list td.date {
   color: var(--muted);
   font-size: 13px;
 }
 
-/* status badge */
+
 .status {
   padding: 6px 8px;
   border-radius: 999px;
@@ -146,7 +145,7 @@
 .status.completed { background: rgba(34,197,94,0.06); color: #bbf7d0; }
 .status.cancelled { background: rgba(255,92,92,0.06); color: #ffb4b4; }
 
-/* total pill */
+
 .total-pill {
   display: inline-block;
   padding: 6px 10px;
@@ -157,7 +156,7 @@
   color: #fff;
 }
 
-/* actions */
+
 .actions {
   display:flex;
   gap:8px;
@@ -182,14 +181,14 @@
 .btn.delete { border: 1px solid rgba(255,92,92,0.08); color: var(--danger); }
 .btn.delete:hover { background: linear-gradient(90deg, rgba(255,92,92,0.08), rgba(255,107,107,0.04)); box-shadow: 0 8px 20px rgba(255,92,92,0.05); }
 
-/* empty row */
+
 .empty-row td {
   padding: 24px;
   text-align:center;
   color: var(--muted);
 }
 
-/* footer: summary + pager */
+
 .list-footer {
   display:flex;
   align-items:center;
@@ -215,7 +214,7 @@
 .pager button:disabled { opacity: 0.45; cursor: not-allowed; }
 .page-indicator { color: var(--muted); font-weight:700; }
 
-/* responsive tweaks */
+
 @media (max-width: 980px) {
   .controls .search { min-width: 160px; max-width: 240px; }
   .order-list table { min-width: 680px; }
