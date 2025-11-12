@@ -1,9 +1,9 @@
-// src/components/OrderList.js
+
 import React, { useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import "./OrderList.css";
 
-/* Utility: format many orderDate shapes to "YYYY-MM-DD HH:MM:SS" */
+
 function safeFormatDate(value) {
   if (!value && value !== 0) return "";
   if (typeof value === "string") {
@@ -43,7 +43,7 @@ function formatMoney(n) {
   return num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
-/* Small SVG icons (inline so no dependencies) */
+
 const IconEdit = ({ className = "icon" }) => (
   <svg className={className} width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
     <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
